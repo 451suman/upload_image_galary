@@ -38,6 +38,21 @@
             <a class="dropdown-item" href="#">Wellness</a>
             <a class="dropdown-item" href="#">Dieting</a>
           </div>
+
+          {% if request.user.is_authenticated %}
+          <li class="nav-item"> 
+
+          <form action="{% url 'logout' %}" method="post" class="top-menu">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Logout</button>
+              
+          </form>
+            </li>
+          {% else %}
+          <li class="nav-item">
+          <a href="#" class="btn btn-success">LOGIN </a>
+            </li>
+          {% endif %}
         </li>
       </ul>
     </div>
